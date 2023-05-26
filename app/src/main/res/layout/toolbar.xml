@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:src="@drawable/icon_menu"
+        android:background="@color/transparent"
+        app:tint="@color/primary500"
+        android:contentDescription="Menu Button"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:paddingHorizontal="10dp"
+        android:onClick="openSidebar"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:text="Metalytics"
+        android:textStyle="bold"
+        android:textSize="22sp"
+        android:textColor="@color/primary900"
+        android:gravity="center"/>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:src="@drawable/icon_user"
+        android:background="@color/transparent"
+        app:tint="@color/primary500"
+        android:contentDescription="Menu Button"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:paddingHorizontal="10dp"/>
+
+</LinearLayout>
