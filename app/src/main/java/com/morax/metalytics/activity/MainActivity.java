@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private UserDao userDao;
     private SharedPreferences userPrefs;
     private DrawerLayout drawerLayout;
-
+    private SharedPreferences nightModePrefs;
     private boolean nightMode;
 
     @Override
@@ -39,8 +39,8 @@ public class MainActivity extends AppCompatActivity {
 
         userPrefs = getSharedPreferences("userPrefs", MODE_PRIVATE);
         userDao = AppDatabase.getInstance(this).userDao();
-
-        nightMode = userPrefs.getBoolean("mode", false);
+        nightModePrefs = getSharedPreferences("nightModePrefs", MODE_PRIVATE);
+        nightMode = nightModePrefs.getBoolean("mode", false);
         if (nightMode) {
             SwitchCompat switchCompat = findViewById(R.id.switch_mode);
             switchCompat.setChecked(true);
@@ -113,11 +113,11 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor editor;
         if (nightMode) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-            editor = userPrefs.edit();
+            editor = nightModePrefs.edit();
             editor.putBoolean("mode", false);
         } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-            editor = userPrefs.edit();
+            editor = nightModePrefs.edit();
             editor.putBoolean("mode", true);
         }
         Toast.makeText(this, "Changing Theme..", Toast.LENGTH_SHORT).show();

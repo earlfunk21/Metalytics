@@ -44,4 +44,9 @@ public class SettingsActivity extends AppCompatActivity {
     public void goBack(View view) {
         onBackPressed();
     }
+
+    public void changePassword(View view) {
+        Intent intent = new Intent(this, ChangePassword.class);
+        startActivity(intent);
+    }
 }
