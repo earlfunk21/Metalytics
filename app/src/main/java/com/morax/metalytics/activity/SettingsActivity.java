@@ -40,4 +40,8 @@ public class SettingsActivity extends AppCompatActivity {
         Intent intent = new Intent(SettingsActivity.this, EditProfileActivity.class);
         startActivity(intent);
     }
+
+    public void goBack(View view) {
+        onBackPressed();
+    }
 }

@@ -14,6 +14,15 @@
         android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent">
 
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:background="@color/transparent"
+            android:layout_margin="10dp"
+            android:src="@drawable/icon_back"
+            android:onClick="goBack"/>
+
         <ImageView
             android:layout_width="200dp"
             android:layout_height="200dp"
@@ -23,11 +32,11 @@
             android:id="@+id/tv_username_settings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/icon_at"
             android:text="Username"
             android:textColor="@color/primary900"
-            android:textStyle="bold"
-            android:drawableLeft="@drawable/icon_at"
-            android:textSize="22sp"/>
+            android:textSize="22sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv_full_name"
@@ -35,20 +44,22 @@
             android:layout_height="wrap_content"
             android:text="Full Name"
             android:textColor="@color/primary900"
-            android:textStyle="bold"
-            android:textSize="22sp"/>
+            android:textSize="22sp"
+            android:textStyle="bold" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/layout1">
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/primary500"
+            android:onClick="openEditProfile"
             android:text="Edit Profile"
-            android:textColor="@color/white"
-            android:onClick="openEditProfile"/>
+            android:textColor="@color/white" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

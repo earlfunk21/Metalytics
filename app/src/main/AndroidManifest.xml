@@ -21,9 +21,6 @@
             android:name=".activity.EditProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.YoutubePlayerActivity"
-            android:exported="false" />
-        <activity
             android:name=".activity.MainActivity"
             android:exported="false" />
         <activity
