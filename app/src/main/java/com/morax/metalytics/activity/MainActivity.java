@@ -86,4 +86,9 @@ public class MainActivity extends AppCompatActivity {
         editor.clear();
         editor.apply();
     }
+
+    public void openSettings(View view){
+        Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+        startActivity(intent);
+    }
 }

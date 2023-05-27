@@ -30,13 +30,14 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:src="@drawable/icon_user"
+        android:src="@drawable/icon_settings"
         android:background="@color/transparent"
         app:tint="@color/primary500"
         android:contentDescription="Menu Button"
         android:clickable="true"
         android:focusable="true"
         android:foreground="?attr/selectableItemBackground"
-        android:paddingHorizontal="10dp"/>
+        android:paddingHorizontal="10dp"
+        android:onClick="openSettings"/>
 
 </LinearLayout>

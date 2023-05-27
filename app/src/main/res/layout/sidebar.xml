@@ -43,7 +43,6 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/homeText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="true"
@@ -55,7 +54,24 @@
             android:text="Home"
             android:textSize="20sp"
             app:drawableLeftCompat="@drawable/icon_home"
-            app:drawableRightCompat="@drawable/icon_forward" />
+            app:drawableRightCompat="@drawable/icon_forward"
+            android:drawableTint="@color/primary500"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:drawablePadding="8dp"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="20dp"
+            android:text="Settings"
+            android:textSize="20sp"
+            android:drawableTint="@color/primary500"
+            app:drawableLeftCompat="@drawable/icon_settings"
+            app:drawableRightCompat="@drawable/icon_forward"
+            android:onClick="openSettings"/>
 
     </LinearLayout>
 
