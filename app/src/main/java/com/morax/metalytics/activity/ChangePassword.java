@@ -11,9 +11,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.hardware.biometrics.BiometricPrompt;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CancellationSignal;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.Toast;
 
@@ -129,10 +131,12 @@ public class ChangePassword extends AppCompatActivity {
         KeyguardManager keyguardManager = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
         if (!keyguardManager.isDeviceSecure()) {
             notifyUser("Fingerprint authentication has not been enabled in settings");
+            openSecuritySettings();
             return;
         }
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.USE_BIOMETRIC) != PackageManager.PERMISSION_GRANTED) {
             notifyUser("Fingerprint Authentication Permission is not enabled");
+            openAppSettings();
             return;
         }
         if (getPackageManager().hasSystemFeature(PackageManager.FEATURE_FINGERPRINT)) {
@@ -143,5 +147,17 @@ public class ChangePassword extends AppCompatActivity {
     // showing toast it takes a string as parameter
     private void notifyUser(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    private void openSecuritySettings() {
+        Intent intent = new Intent(Settings.ACTION_SECURITY_SETTINGS);
+        startActivity(intent);
+    }
+
+    private void openAppSettings() {
+        Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+        Uri uri = Uri.fromParts("package", getPackageName(), null);
+        intent.setData(uri);
+        startActivity(intent);
     }
 }
