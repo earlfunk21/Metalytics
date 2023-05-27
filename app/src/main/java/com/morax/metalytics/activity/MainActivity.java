@@ -6,29 +6,36 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
 import com.google.android.material.tabs.TabLayout;
 import com.morax.metalytics.R;
-import com.morax.metalytics.adapter.TabLayoutAdapter;
+import com.morax.metalytics.adapter.HomeLayoutAdapter;
+import com.morax.metalytics.database.AppDatabase;
+import com.morax.metalytics.database.dao.UserDao;
 
 public class MainActivity extends AppCompatActivity {
-
+    private UserDao userDao;
+    private SharedPreferences userPrefs;
     private DrawerLayout drawerLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        userPrefs = getSharedPreferences("userPrefs", MODE_PRIVATE);
+        userDao = AppDatabase.getInstance(this).userDao();
         ViewPager2 viewPager2 = findViewById(R.id.viewPager2);
         TabLayout tabLayout = findViewById(R.id.tabLayout);
         viewPager2.setUserInputEnabled(false);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
-        TabLayoutAdapter tabLayoutAdapter = new TabLayoutAdapter(fragmentManager, getLifecycle());
-        viewPager2.setAdapter(tabLayoutAdapter);
+        HomeLayoutAdapter homeLayoutAdapter = new HomeLayoutAdapter(fragmentManager, getLifecycle());
+        viewPager2.setAdapter(homeLayoutAdapter);
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -69,5 +76,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         closeSidebar();
+    }
+
+    public void logoutUser(View view) {
+        Intent intent = new Intent(MainActivity.this, AccountActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        SharedPreferences.Editor editor = userPrefs.edit();
+        editor.clear();
+        editor.apply();
     }
 }

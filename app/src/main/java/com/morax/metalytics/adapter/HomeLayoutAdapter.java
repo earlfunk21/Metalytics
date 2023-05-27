@@ -10,9 +10,9 @@ import com.morax.metalytics.fragment.GuidesFragment;
 import com.morax.metalytics.fragment.NewsFragment;
 import com.morax.metalytics.fragment.VideosFragment;
 
-public class TabLayoutAdapter extends FragmentStateAdapter {
+public class HomeLayoutAdapter extends FragmentStateAdapter {
 
-    public TabLayoutAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
+    public HomeLayoutAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
         super(fragmentManager, lifecycle);
     }
 

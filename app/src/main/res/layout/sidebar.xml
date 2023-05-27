@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="300dp"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/background">
+    android:background="@color/background"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="bottom"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="40dp">
 
         <ImageView
             android:layout_width="100dp"
@@ -31,6 +32,40 @@
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:background="@color/gray"
-        android:elevation="4dp"/>
+        android:elevation="4dp" />
 
+    <LinearLayout
+        android:id="@+id/home"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:onClick="openHome"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/homeText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:drawablePadding="8dp"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="20dp"
+            android:text="Home"
+            android:textSize="20sp"
+            app:drawableLeftCompat="@drawable/icon_home"
+            app:drawableRightCompat="@drawable/icon_forward" />
+
+    </LinearLayout>
+
+    <Button
+        android:layout_margin="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:backgroundTint="@color/primary500"
+        android:textColor="@color/white"
+        android:text="Logout"
+        android:onClick="logoutUser"/>
 </LinearLayout>
