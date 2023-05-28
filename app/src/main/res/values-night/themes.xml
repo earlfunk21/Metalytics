@@ -2,6 +2,22 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Metalytics" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
-         <item name="colorPrimary">@color/primary500</item>
+        <item name="colorPrimary">@color/primary500</item>
+
+    </style>
+
+    <style name="AlertDialogCustom" parent="Theme.AppCompat.DayNight.Dialog.Alert">
+        <item name="buttonBarNegativeButtonStyle">@style/negative</item>
+        <item name="buttonBarPositiveButtonStyle">@style/positive</item>
+    </style>
+
+    <style name="positive">
+        <item name="android:textColor">@color/primary500</item>
+        <item name="android:background">@color/transparent</item>
+    </style>
+
+    <style name="negative">
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:background">@color/transparent</item>
     </style>
 </resources>

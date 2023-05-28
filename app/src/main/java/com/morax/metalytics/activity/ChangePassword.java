@@ -85,7 +85,7 @@ public class ChangePassword extends AppCompatActivity {
                 user.password = newPassword;
                 userDao.update(user);
                 Toast.makeText(ChangePassword.this, "Successfully Password Updated!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(ChangePassword.this, SettingsActivity.class);
+                Intent intent = new Intent(ChangePassword.this, ProfileActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
             }

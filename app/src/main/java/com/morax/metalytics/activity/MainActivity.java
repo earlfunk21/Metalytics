@@ -1,29 +1,23 @@
 package com.morax.metalytics.activity;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.FragmentManager;
-import androidx.viewpager2.widget.ViewPager2;
+import androidx.fragment.app.Fragment;
 
-import android.app.UiModeManager;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.CheckedTextView;
 import android.widget.Toast;
 
-import com.google.android.material.tabs.TabLayout;
 import com.morax.metalytics.R;
-import com.morax.metalytics.adapter.HomeLayoutAdapter;
 import com.morax.metalytics.database.AppDatabase;
 import com.morax.metalytics.database.dao.UserDao;
+import com.morax.metalytics.fragment.HomeFragment;
+import com.morax.metalytics.fragment.PostFragment;
 
 public class MainActivity extends AppCompatActivity {
     private UserDao userDao;
@@ -46,38 +40,9 @@ public class MainActivity extends AppCompatActivity {
             switchCompat.setChecked(true);
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         }
-        ViewPager2 viewPager2 = findViewById(R.id.viewPager2);
-        TabLayout tabLayout = findViewById(R.id.tabLayout);
-        viewPager2.setUserInputEnabled(false);
-
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        HomeLayoutAdapter homeLayoutAdapter = new HomeLayoutAdapter(fragmentManager, getLifecycle());
-        viewPager2.setAdapter(homeLayoutAdapter);
-
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                viewPager2.setCurrentItem(tab.getPosition());
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
-
-        viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
-            @Override
-            public void onPageSelected(int position) {
-                tabLayout.selectTab(tabLayout.getTabAt(position));
-            }
-        });
 
         drawerLayout = findViewById(R.id.drawer_layout);
+        changeViewContent(new HomeFragment());
     }
 
     public void openSidebar(View view) {
@@ -105,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openSettings(View view) {
-        Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+        Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
         startActivity(intent);
     }
 
@@ -126,5 +91,21 @@ public class MainActivity extends AppCompatActivity {
 
     public void switchMode(View view){
         changeMode();
+    }
+
+    public void changePostView(View view){
+        changeViewContent(new PostFragment());
+    }
+
+    public void changeViewContent(Fragment fragment){
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.layout_content, fragment)
+                .commit();
+        closeSidebar();
+    }
+
+    public void changeHomeView(View view){
+        changeViewContent(new HomeFragment());
     }
 }

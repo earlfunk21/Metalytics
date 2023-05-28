@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.USE_BIOMETRIC" />
 
     <application
@@ -20,7 +19,7 @@
             android:name=".activity.ChangePassword"
             android:exported="false" />
         <activity
-            android:name=".activity.SettingsActivity"
+            android:name=".activity.ProfileActivity"
             android:exported="false" />
         <activity
             android:name=".activity.EditProfileActivity"

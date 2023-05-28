@@ -13,7 +13,7 @@ import com.morax.metalytics.database.AppDatabase;
 import com.morax.metalytics.database.dao.UserDao;
 import com.morax.metalytics.database.entity.User;
 
-public class SettingsActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity {
 
     private UserDao userDao;
     private User user;
@@ -22,7 +22,7 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
+        setContentView(R.layout.activity_profile);
 
         userDao = AppDatabase.getInstance(this).userDao();
         userPrefs = getSharedPreferences("userPrefs", MODE_PRIVATE);
@@ -37,7 +37,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void openEditProfile(View view) {
-        Intent intent = new Intent(SettingsActivity.this, EditProfileActivity.class);
+        Intent intent = new Intent(ProfileActivity.this, EditProfileActivity.class);
         startActivity(intent);
     }
 

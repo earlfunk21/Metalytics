@@ -61,7 +61,7 @@ public class EditProfileActivity extends AppCompatActivity {
         user.lastname = lastname;
         userDao.update(user);
         Toast.makeText(this, "Successfully Updated!", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(EditProfileActivity.this, SettingsActivity.class);
+        Intent intent = new Intent(EditProfileActivity.this, ProfileActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
