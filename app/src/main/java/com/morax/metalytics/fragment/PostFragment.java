@@ -1,13 +1,18 @@
 package com.morax.metalytics.fragment;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
@@ -125,12 +130,14 @@ public class PostFragment extends Fragment {
 
                         // Scroll the RecyclerView to the top
                         recyclerView.scrollToPosition(0);
+                        createNotification();
                     }
                 });
                 dialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
+
                     }
                 });
                 AlertDialog dialog = dialogBuilder.create();
@@ -143,5 +150,22 @@ public class PostFragment extends Fragment {
         try {
             postList.addAll(postDao.getPosts());
         } catch (NullPointerException ignored){}
+    }
+
+    private void createNotification() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel("My Notification", "Metalytics Notification Alert!", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager manager = requireContext().getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+        }
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(requireContext(), "My Notification");
+        builder.setContentTitle("Notification Alert!");
+        builder.setContentText("Someone is posted!");
+        builder.setSmallIcon(R.drawable.icon_person);
+        builder.setAutoCancel(true);
+
+        NotificationManagerCompat managerCompat = NotificationManagerCompat.from(requireContext());
+        managerCompat.notify(1, builder.build());
     }
 }

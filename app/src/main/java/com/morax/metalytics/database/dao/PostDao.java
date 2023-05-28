@@ -28,4 +28,7 @@ public interface PostDao {
 
     @Query("DELETE FROM Post")
     void deleteAll();
+
+    @Query("SELECT * FROM Post WHERE userId = :userId")
+    List<Post> getPostsByUserId(long userId);
 }
