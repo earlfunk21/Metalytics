@@ -89,15 +89,15 @@ public class MainActivity extends AppCompatActivity {
         editor.apply();
     }
 
-    public void switchMode(View view){
+    public void switchMode(View view) {
         changeMode();
     }
 
-    public void changePostView(View view){
+    public void changePostView(View view) {
         changeViewContent(new PostFragment());
     }
 
-    public void changeViewContent(Fragment fragment){
+    public void changeViewContent(Fragment fragment) {
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.layout_content, fragment)
@@ -105,7 +105,11 @@ public class MainActivity extends AppCompatActivity {
         closeSidebar();
     }
 
-    public void changeHomeView(View view){
+    public void changeHomeView(View view) {
         changeViewContent(new HomeFragment());
+    }
+
+    public void changeQuizView(View view) {
+        changeViewContent(new QuizFragment());
     }
 }

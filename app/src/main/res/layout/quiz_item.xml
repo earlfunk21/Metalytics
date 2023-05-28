@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/iv_image_quiz"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scaleType="centerCrop"
+            tools:src="@drawable/thresh" />
+
+        <TextView
+            android:layout_margin="20dp"
+            android:id="@+id/tv_question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/primary700"
+            android:textStyle="bold"
+            tools:text="Who is this champion?" />
+
+        <RadioGroup
+            android:id="@+id/rg_choices"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp">
+
+            <RadioButton
+                android:id="@+id/rb_option1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Option 1" />
+
+            <RadioButton
+                android:id="@+id/rb_option2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Option 2" />
+
+            <RadioButton
+                android:id="@+id/rb_option3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Option 3" />
+
+            <RadioButton
+                android:id="@+id/rb_option4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Option 4" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/tv_correct_answer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Correct Answer"
+            android:textColor="@android:color/holo_green_dark"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_wrong_answer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Wrong Answer"
+            android:textColor="@android:color/holo_red_dark"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btn_next"
+            android:layout_marginVertical="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Next" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

@@ -91,6 +91,22 @@
             app:drawableRightCompat="@drawable/icon_forward"
             android:onClick="changePostView"/>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:drawablePadding="8dp"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="20dp"
+            android:text="Quizzes"
+            android:textSize="20sp"
+            android:drawableTint="@color/primary500"
+            app:drawableLeftCompat="@drawable/icon_quiz"
+            app:drawableRightCompat="@drawable/icon_forward"
+            android:onClick="changeQuizView"/>
+
     </LinearLayout>
 
     <Button
